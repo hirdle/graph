@@ -21,7 +21,7 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.init_canvas()
 
         self._graph = Graph({
-            'A': [['B', 1], ['C', 1]],
+            'A': [['B', 1], ['C', 5]],
             'B': [['A', 1], ['C', 9]],
             'C': [['A', 4], ['B', 5]]
         })
