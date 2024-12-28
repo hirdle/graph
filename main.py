@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import sys
 from design import Ui_MainWindow
+from graph import Graph 
+
 
 
 class GraphWindow(QMainWindow, Ui_MainWindow):
@@ -18,24 +20,51 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.setWindowTitle("Приложение для работы с графами КапиГраф")
         self.init_canvas()
 
-        self.graph_dict={
+        self._graph = Graph({
             'A': [['B', 1], ['C', 1]],
             'B': [['A', 1], ['C', 9]],
             'C': [['A', 4], ['B', 5]]
-        }
+        })
         
-        self.plot_graph(self.graph_dict)
-
-        # self.plot_graph(graph_dict={'A': ['B', 'C'],
-        #                    'B': ['A', 'C'],
-        #                    'C': ['A', 'B']})
+        self.updateGraph()
 
         self.vertexAddBtn.clicked.connect(self.add_vertex)
+        self.edgeAddBtn.clicked.connect(self.add_edge)
+        self.vertexDeleteBtn.clicked.connect(self.delete_vertex)
+        self.edgeDeleteBtn.clicked.connect(self.delete_edge)
+
+
+    def updateGraph(self):
+        self.deleteVertexSelect.clear()
+        self.deleteVertexSelect.addItems(self._graph.get_vertices())
+        self.deleteStartEdgeSelect.addItems(self._graph.get_vertices())
+        self.deleteEndEdgeSelect.addItems(self._graph.get_vertices())
+        self.plot_graph()
 
 
     def add_vertex(self):
-        self.graph_dict[self.vertexAddInput.text()] = []
-        self.plot_graph(self.graph_dict)
+        self._graph.add_vertex(self.vertexAddInput.text())
+        self.vertexAddInput.clear()
+        self.updateGraph()
+
+    
+    def delete_vertex(self):
+        self._graph.delete_vertex(self.deleteVertexSelect.currentText())
+        self.updateGraph()
+
+    def delete_edge(self):
+        self._graph.delete_edge(self.deleteStartEdgeSelect.currentText(), self.deleteEndEdgeSelect.currentText())
+        self.deleteStartEdgeSelect.clear()
+        self.deleteEndEdgeSelect.clear()
+        self.updateGraph()
+
+
+
+    def add_edge(self):
+        self._graph.add_edge(self.startEdgeAddInput.text(), self.endEdgeAddInput.text())
+        self.startEdgeAddInput.clear()
+        self.endEdgeAddInput.clear()
+        self.updateGraph()
 
 
     def init_canvas(self):
@@ -50,26 +79,27 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.graphFrame.setLayout(layout)
 
 
-    def plot_graph(self, graph_dict):
+    def plot_graph(self):
         """Функция отрисовки взвешенного графа"""
-        B = nx.Graph()
+        
+        B = nx.Graph(self._graph.get_graph_not_weight())
 
-        # Составление графа в зависимости от его типа
-        if type(graph_dict[list(graph_dict.keys())[0]][0]) == list:
+        # # Составление графа в зависимости от его типа
+        # if type(_graph_dict[list(_graph_dict.keys())[0]][0]) == list:
 
-            for node, edges in graph_dict.items():
-                B.add_node(node)
+        #     for node, edges in _graph_dict.items():
+        #         B.add_node(node)
 
-                for neighbor, weight in edges:
-                    B.add_node(neighbor)
-                    B.add_edge(node, neighbor, weight=weight)
+        #         for neighbor, weight in edges:
+        #             B.add_node(neighbor)
+        #             B.add_edge(node, neighbor, weight=weight)
                 
-        else:
+        # else:
 
-            for node, edges in graph_dict.items():
-                for neighbor in edges:
-                    B.add_edge(node, neighbor)
-
+        #     for node, edges in _graph_dict.items():
+        #         for neighbor in edges:
+        #             B.add_edge(node, neighbor)
+   
 
         pos = nx.spring_layout(B)  # Позиционирование
 
