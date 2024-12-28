@@ -23,7 +23,7 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self._graph = Graph({
             'A': [['B', 1], ['C', 5]],
             'B': [['A', 1], ['C', 9]],
-            'C': [['A', 4], ['B', 5]]
+            'C': [['A', 10], ['B', 5]]
         })
         
         self.updateGraph()
