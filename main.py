@@ -67,6 +67,17 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.updateGraph()
 
 
+    def dfs_paths(self):
+        self._graph.dfs_paths(self.dfsPathStart.text(), self.dfsPathEnd.text())
+        self.dfsPathStart.clear()
+        self.dfsPathEnd.clear()
+        self.updateGraph()
+
+    def bfs_paths(self):
+        ...
+    
+
+
     def init_canvas(self):
         """Функция инициализации холста"""
 
