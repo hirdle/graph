@@ -115,14 +115,13 @@ class Ui_MainWindow(object):
         self.dfsPathEnd.setGeometry(QtCore.QRect(10, 90, 171, 22))
         self.dfsPathEnd.setObjectName("dfsPathStart")
 
-
         self.dfsPathBtn = QtWidgets.QPushButton(parent=self.frame_5)
         self.dfsPathBtn.setGeometry(QtCore.QRect(10, 120, 80, 22))
-        self.dfsPathBtn.setObjectName("dfsBtn")
+        self.dfsPathBtn.setObjectName("dfsPathBtn")
 
 
         self.frame_6 = QtWidgets.QFrame(parent=self.centralwidget)
-        self.frame_6.setGeometry(QtCore.QRect(620, 270, 191, 121))
+        self.frame_6.setGeometry(QtCore.QRect(620, 270, 191, 150))
         self.frame_6.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_6.setObjectName("frame_6")
@@ -130,12 +129,16 @@ class Ui_MainWindow(object):
         self.label_6.setGeometry(QtCore.QRect(10, 40, 161, 16))
         self.label_6.setObjectName("label_6")
 
-        self.bfsPathVert = QtWidgets.QComboBox(parent=self.frame_6)
-        self.bfsPathVert.setGeometry(QtCore.QRect(10, 60, 171, 22))
-        self.bfsPathVert.setObjectName("bfsPathVert")
+        self.bfsPathStart = QtWidgets.QComboBox(parent=self.frame_6)
+        self.bfsPathStart.setGeometry(QtCore.QRect(10, 60, 171, 22))
+        self.bfsPathStart.setObjectName("bfsPathStart")
+
+        self.bfsPathEnd = QtWidgets.QComboBox(parent=self.frame_6)
+        self.bfsPathEnd.setGeometry(QtCore.QRect(10, 90, 171, 22))
+        self.bfsPathEnd.setObjectName("bfsPathEnd")
 
         self.bfsPathBtn = QtWidgets.QPushButton(parent=self.frame_6)
-        self.bfsPathBtn.setGeometry(QtCore.QRect(10, 90, 80, 22))
+        self.bfsPathBtn.setGeometry(QtCore.QRect(10, 120, 80, 22))
         self.bfsPathBtn.setObjectName("bfsPathBtn")
 
 
@@ -164,9 +167,9 @@ class Ui_MainWindow(object):
         self.dfsPathBtn.setText(_translate("MainWindow", "Поиск"))
         self.dfsPathStart.setPlaceholderText(_translate("MainWindow", "Первая вершина"))
         self.dfsPathEnd.setPlaceholderText(_translate("MainWindow", "Вторая вершина"))
-
         self.label_5.setText(_translate("MainWindow", "Поиск в глубину"))
 
         self.bfsPathBtn.setText(_translate("MainWindow", "Поиск"))
-        self.bfsPathVert.setPlaceholderText(_translate("MainWindow", "Вершина"))
+        self.bfsPathStart.setPlaceholderText(_translate("MainWindow", "Первая вершина"))
+        self.bfsPathEnd.setPlaceholderText(_translate("MainWindow", "Вторая вершина"))
         self.label_6.setText(_translate("MainWindow", "Поиск в ширину"))
