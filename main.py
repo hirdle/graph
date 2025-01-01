@@ -33,6 +33,9 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.vertexDeleteBtn.clicked.connect(self.delete_vertex)
         self.edgeDeleteBtn.clicked.connect(self.delete_edge)
 
+        self.exportBtn.clicked.connect(self.exportGraph)
+        self.importBtn.clicked.connect(self.importGraph)
+
 
     def updateGraph(self):
         self.deleteVertexSelect.clear()
@@ -40,6 +43,24 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.deleteStartEdgeSelect.addItems(self._graph.get_vertices())
         self.deleteEndEdgeSelect.addItems(self._graph.get_vertices())
         self.plot_graph()
+
+
+    def importGraph(self):
+        fileName = QFileDialog.getOpenFileName(self, caption="Льал")
+        if fileName[0]:
+            with open(fileName[0], 'r') as file:
+                self._graph.create_from_adjacency_matrix(
+                    matrix=[list(map(int, line.split(' '))) for line in file.readlines()]
+                )
+                self.updateGraph()
+
+
+    def exportGraph(self):
+        fileName = QFileDialog.getSaveFileName(self, caption="Льал")
+        if fileName[0]:
+            with open(fileName[0], 'w') as file:
+                for row in self._graph.get_adjacency_matrix():
+                    print(*row, file=file)
 
 
     def add_vertex(self):
@@ -82,23 +103,25 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
     def plot_graph(self):
         """Функция отрисовки взвешенного графа"""
         
-        B = nx.Graph(self._graph.get_graph_not_weight())
+        B = nx.Graph()
 
-        # # Составление графа в зависимости от его типа
-        # if type(_graph_dict[list(_graph_dict.keys())[0]][0]) == list:
+        _graph_dict = self._graph._graph_dict
 
-        #     for node, edges in _graph_dict.items():
-        #         B.add_node(node)
+        # Составление графа в зависимости от его типа
+        if type(_graph_dict[list(_graph_dict.keys())[0]][0]) == list:
 
-        #         for neighbor, weight in edges:
-        #             B.add_node(neighbor)
-        #             B.add_edge(node, neighbor, weight=weight)
+            for node, edges in _graph_dict.items():
+                B.add_node(node)
+
+                for neighbor, weight in edges:
+                    B.add_node(neighbor)
+                    B.add_edge(node, neighbor, weight=weight)
                 
-        # else:
+        else:
 
-        #     for node, edges in _graph_dict.items():
-        #         for neighbor in edges:
-        #             B.add_edge(node, neighbor)
+            for node, edges in _graph_dict.items():
+                for neighbor in edges:
+                    B.add_edge(node, neighbor)
    
 
         pos = nx.spring_layout(B)  # Позиционирование
