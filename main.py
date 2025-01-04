@@ -7,7 +7,6 @@ from design import Ui_MainWindow
 from graph import Graph 
 
 
-
 class GraphWindow(QMainWindow, Ui_MainWindow):
     """Класс окна приложения"""
 
@@ -38,6 +37,8 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
 
 
     def updateGraph(self):
+        """Обновление графа"""
+
         self.deleteVertexSelect.clear()
         self.deleteVertexSelect.addItems(self._graph.get_vertices())
         self.deleteStartEdgeSelect.addItems(self._graph.get_vertices())
@@ -46,7 +47,9 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
 
 
     def importGraph(self):
-        fileName = QFileDialog.getOpenFileName(self, caption="Льал")
+        """Импорт графа"""
+
+        fileName = QFileDialog.getOpenFileName(self, caption="Выбор графа")
         if fileName[0]:
             with open(fileName[0], 'r') as file:
                 self._graph.create_from_adjacency_matrix(
@@ -56,7 +59,9 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
 
 
     def exportGraph(self):
-        fileName = QFileDialog.getSaveFileName(self, caption="Льал")
+        """Экспорт графа"""
+
+        fileName = QFileDialog.getSaveFileName(self, caption="Сохранение графа")
         if fileName[0]:
             with open(fileName[0], 'w') as file:
                 for row in self._graph.get_adjacency_matrix():
@@ -64,28 +69,48 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
 
 
     def add_vertex(self):
-        self._graph.add_vertex(self.vertexAddInput.text())
-        self.vertexAddInput.clear()
-        self.updateGraph()
+        """Добавление вершины"""
+
+        if self.vertexAddInput.text():
+            self._graph.add_vertex(self.vertexAddInput.text())
+            self.vertexAddInput.clear()
+            self.updateGraph()
+        else:
+            QMessageBox.warning(self, "Ошибка", "Введите вершину")
 
     
     def delete_vertex(self):
-        self._graph.delete_vertex(self.deleteVertexSelect.currentText())
-        self.updateGraph()
+        """Удаление вершины"""
+
+        if self.deleteVertexSelect.currentText():
+            self._graph.delete_vertex(self.deleteVertexSelect.currentText())
+            self.updateGraph()
+        else:
+            QMessageBox.warning(self, "Ошибка", "Выберите вершину для удаления")
+
 
     def delete_edge(self):
-        self._graph.delete_edge(self.deleteStartEdgeSelect.currentText(), self.deleteEndEdgeSelect.currentText())
-        self.deleteStartEdgeSelect.clear()
-        self.deleteEndEdgeSelect.clear()
-        self.updateGraph()
+        """Удаление ребра"""
 
+        if self.deleteStartEdgeSelect.currentText() and self.deleteEndEdgeSelect.currentText():
+            self._graph.delete_edge(self.deleteStartEdgeSelect.currentText(), self.deleteEndEdgeSelect.currentText())
+            self.deleteStartEdgeSelect.clear()
+            self.deleteEndEdgeSelect.clear()
+            self.updateGraph()
+        else:
+            QMessageBox.warning(self, "Ошибка", "Выберите вершины для удаления ребра")
 
 
     def add_edge(self):
-        self._graph.add_edge(self.startEdgeAddInput.text(), self.endEdgeAddInput.text())
-        self.startEdgeAddInput.clear()
-        self.endEdgeAddInput.clear()
-        self.updateGraph()
+        """"Добавление ребра"""
+
+        if self.startEdgeAddInput.text() and self.endEdgeAddInput.text():
+            self._graph.add_edge(self.startEdgeAddInput.text(), self.endEdgeAddInput.text())
+            self.startEdgeAddInput.clear()
+            self.endEdgeAddInput.clear()
+            self.updateGraph()
+        else:
+            QMessageBox.warning(self, "Ошибка", "Введите вершины для добавления ребра")
 
 
     def init_canvas(self):
@@ -107,8 +132,14 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
 
         _graph_dict = self._graph._graph_dict
 
+        weight_graph = False
+
+        try:
+            weight_graph = type(_graph_dict[list(_graph_dict.keys())[0]][0]) == list
+        except: pass
+
         # Составление графа в зависимости от его типа
-        if type(_graph_dict[list(_graph_dict.keys())[0]][0]) == list:
+        if weight_graph:
 
             for node, edges in _graph_dict.items():
                 B.add_node(node)
@@ -140,6 +171,8 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
     
 
 if __name__ == '__main__':
+    """Старт приложения"""
+
     app = QApplication(sys.argv)
     window = GraphWindow()
     window.show()
