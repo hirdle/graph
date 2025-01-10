@@ -34,6 +34,8 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
 
         self.exportBtn.clicked.connect(self.exportGraph)
         self.importBtn.clicked.connect(self.importGraph)
+        self.bfsGetBtn.clicked.connect(self.show_bfs_paths)
+        self.dfsGetBtn.clicked.connect(self.show_dfs_paths)
 
 
     def updateGraph(self):
@@ -167,8 +169,41 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         nx.draw_networkx_edge_labels(B, pos, edge_labels=edge_labels, ax=ax)
 
         self.canvas.draw()
-    
-    
+
+
+    def show_bfs_paths(self):
+        """Показать пути BFS в модальном окне"""
+        
+        start_vertex = self.bfsStartVertexInput.text()
+        finish_vertex = self.bfsFinishVertexInput.text()  # Получаем конечную вершину
+        if start_vertex and finish_vertex:
+            if finish_vertex in self._graph.get_vertices():  # Проверка на существование конечной вершины
+                paths = self._graph.bfs_paths(start_vertex, finish_vertex)  # Передаем конечную вершину
+                # Преобразование каждого пути в строку
+                paths_str = [" -> ".join(path) for path in paths]
+                QMessageBox.information(self, "Пути BFS", f"Пути от {start_vertex} до {finish_vertex}:\n" + "\n".join(paths_str))
+            else:
+                QMessageBox.warning(self, "Ошибка", "Конечная вершина не существует в графе")
+        else:
+            QMessageBox.warning(self, "Ошибка", "Введите стартовую и конечную вершину для BFS")
+
+
+    def show_dfs_paths(self):
+        """Показать пути DFS в модальном окне"""
+        
+        start_vertex = self.dfsStartVertexInput.text()
+        finish_vertex = self.dfsFinishVertexInput.text()  # Получаем конечную вершину
+        if start_vertex and finish_vertex:
+            if finish_vertex in self._graph.get_vertices():  # Проверка на существование конечной вершины
+                paths = self._graph.dfs_paths(start_vertex, finish_vertex)  # Передаем конечную вершину
+                # Преобразование каждого пути в строку
+                paths_str = [" -> ".join(path) for path in paths]
+                QMessageBox.information(self, "Пути DFS", f"Пути от {start_vertex} до {finish_vertex}:\n" + "\n".join(paths_str))
+            else:
+                QMessageBox.warning(self, "Ошибка", "Конечная вершина не существует в графе")
+        else:
+            QMessageBox.warning(self, "Ошибка", "Введите стартовую и конечную вершину для DFS")
+
 
 if __name__ == '__main__':
     """Старт приложения"""
