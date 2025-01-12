@@ -6,548 +6,581 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1010</width>
-    <height>612</height>
+    <width>1031</width>
+    <height>701</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="graphFrame">
+   <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>50</y>
-      <width>341</width>
-      <height>481</height>
+      <x>20</x>
+      <y>20</y>
+      <width>991</width>
+      <height>641</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+    <property name="currentIndex">
+     <number>0</number>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="importBtn">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>540</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Импорт</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="exportBtn">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>540</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Экспорт</string>
-    </property>
-   </widget>
-   <widget class="QFrame" name="frame_5">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>50</y>
-      <width>411</width>
-      <height>251</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QFrame" name="frame_4">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>120</y>
-       <width>191</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_4">
+    <widget class="QWidget" name="graphControlTab">
+     <attribute name="title">
+      <string>Управление графом</string>
+     </attribute>
+     <widget class="QFrame" name="graphFrame">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>161</width>
-        <height>16</height>
+        <x>90</x>
+        <y>40</y>
+        <width>341</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="importBtn">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>550</y>
+        <width>121</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Удалить ребро</string>
+       <string>Импорт</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="edgeDeleteBtn">
+     <widget class="QPushButton" name="exportBtn">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>80</width>
-        <height>22</height>
+        <x>360</x>
+        <y>550</y>
+        <width>121</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Удолить</string>
+       <string>Экспорт</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="deleteStartEdgeSelect">
+     <widget class="QFrame" name="frame_5">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>171</width>
-        <height>22</height>
+        <x>470</x>
+        <y>40</y>
+        <width>411</width>
+        <height>251</height>
        </rect>
       </property>
-      <property name="placeholderText">
-       <string>Первая вершина</string>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QFrame" name="frame_4">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>120</y>
+         <width>191</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Удалить ребро</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="edgeDeleteBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>80</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Удолить</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="deleteStartEdgeSelect">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>Первая вершина</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="deleteEndEdgeSelect">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="placeholderText">
+         <string>Вторая вершина</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>191</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Добавить вершину</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="vertexAddInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Название вершины</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="vertexAddBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>80</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Добавить</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_3">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>10</y>
+         <width>191</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Удалить вершину</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="vertexDeleteBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>80</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Удолить</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="deleteVertexSelect">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>191</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Добавить ребро</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="startEdgeAddInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Первая вершина</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="edgeAddBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>80</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Добавить</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="endEdgeAddInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Вторая вершина</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
-     <widget class="QComboBox" name="deleteEndEdgeSelect">
+     <widget class="QComboBox" name="exportInput">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>171</width>
-        <height>22</height>
+        <x>200</x>
+        <y>550</y>
+        <width>151</width>
+        <height>31</height>
        </rect>
-      </property>
-      <property name="placeholderText">
-       <string>Вторая вершина</string>
       </property>
      </widget>
     </widget>
-    <widget class="QFrame" name="frame">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>191</width>
-       <height>91</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label">
+    <widget class="QWidget" name="algoGraphTab">
+     <attribute name="title">
+      <string>Алгоритмы</string>
+     </attribute>
+     <widget class="QFrame" name="frame_6">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>161</width>
-        <height>16</height>
+        <width>411</width>
+        <height>141</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Добавить вершину</string>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
-     </widget>
-     <widget class="QLineEdit" name="vertexAddInput">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
       </property>
-      <property name="statusTip">
-       <string/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Название вершины</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="vertexAddBtn">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>80</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Добавить</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QFrame" name="frame_3">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>10</y>
-       <width>191</width>
-       <height>91</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Удалить вершину</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="vertexDeleteBtn">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>80</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Удолить</string>
-      </property>
-     </widget>
-     <widget class="QComboBox" name="deleteVertexSelect">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QFrame" name="frame_2">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>191</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Добавить ребро</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="startEdgeAddInput">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="statusTip">
-       <string/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Первая вершина</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="edgeAddBtn">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>80</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Добавить</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="endEdgeAddInput">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="statusTip">
-       <string/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Вторая вершина</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QFrame" name="frame_6">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>320</y>
-      <width>411</width>
-      <height>211</height>
-     </rect>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QFrame" name="frame_7">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>191</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_5">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>dfs</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="dfsStartVertexInput">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="statusTip">
-       <string/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Стартовая вершина</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="dfsGetBtn">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>80</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Получить</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="dfsFinishVertexInput">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="statusTip">
-       <string/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Конечная вершина</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QFrame" name="frame_8">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>10</y>
-       <width>191</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>bfs</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="bfsStartVertexInput">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="statusTip">
-       <string/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Стартовая вершина</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="bfsGetBtn">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>90</y>
-        <width>80</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Получить</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="bfsFinishVertexInput">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>60</y>
-        <width>171</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="statusTip">
-       <string/>
-      </property>
-      <property name="whatsThis">
-       <string/>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Конечная вершина</string>
-      </property>
+      <widget class="QFrame" name="frame_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>191</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>dfs</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="dfsStartVertexInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Стартовая вершина</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="dfsGetBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>80</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Получить</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="dfsFinishVertexInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Конечная вершина</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QFrame" name="frame_8">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>10</y>
+         <width>191</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>bfs</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="bfsStartVertexInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Стартовая вершина</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bfsGetBtn">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>80</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Получить</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="bfsFinishVertexInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Конечная вершина</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
    </widget>

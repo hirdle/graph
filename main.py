@@ -36,12 +36,15 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.importBtn.clicked.connect(self.importGraph)
         self.bfsGetBtn.clicked.connect(self.show_bfs_paths)
         self.dfsGetBtn.clicked.connect(self.show_dfs_paths)
+        self.exportInput.addItems(['Сохранение в картинку', 'Сохранить в матрицу смежности'])
 
 
     def updateGraph(self):
         """Обновление графа"""
 
         self.deleteVertexSelect.clear()
+        self.deleteStartEdgeSelect.clear()
+        self.deleteEndEdgeSelect.clear()
         self.deleteVertexSelect.addItems(self._graph.get_vertices())
         self.deleteStartEdgeSelect.addItems(self._graph.get_vertices())
         self.deleteEndEdgeSelect.addItems(self._graph.get_vertices())
@@ -51,23 +54,39 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
     def importGraph(self):
         """Импорт графа"""
 
-        fileName = QFileDialog.getOpenFileName(self, caption="Выбор графа")
+        fileName = QFileDialog.getOpenFileName(self, caption="Выбор графа", filter='*.txt')
         if fileName[0]:
             with open(fileName[0], 'r') as file:
-                self._graph.create_from_adjacency_matrix(
-                    matrix=[list(map(int, line.split(' '))) for line in file.readlines()]
-                )
-                self.updateGraph()
+                try:
+                    self._graph.create_from_adjacency_matrix(
+                        matrix=[list(map(int, line.split(' '))) for line in file.readlines()]
+                    )
+                    self.updateGraph()
+                    QMessageBox.information(self, "Успешно", "Граф успешно импортирован")
+
+                except:
+                    QMessageBox.warning(self, "Ошибка", "Неверные данные в файле")
 
 
     def exportGraph(self):
         """Экспорт графа"""
 
-        fileName = QFileDialog.getSaveFileName(self, caption="Сохранение графа")
-        if fileName[0]:
-            with open(fileName[0], 'w') as file:
-                for row in self._graph.get_adjacency_matrix():
-                    print(*row, file=file)
+        match self.exportInput.currentText():
+
+            case 'Сохранение в картинку':
+
+                fileName = QFileDialog.getSaveFileName(self, 'Сохранение графа в картинку', 'graph.jpg', filter=self.tr(".jpg"))
+                if fileName[0]:
+                    plt.savefig(fileName[0], format="JPG")
+                
+
+            case 'Сохранить в матрицу смежности':
+
+                fileName = QFileDialog.getSaveFileName(self, 'Сохранение графа', 'graph.txt', filter=self.tr(".txt"))
+                if fileName[0]:
+                    with open(fileName[0], 'w') as file:
+                        for row in self._graph.get_adjacency_matrix():
+                            print(*row, file=file)
 
 
     def add_vertex(self):
