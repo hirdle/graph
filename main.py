@@ -16,12 +16,14 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
+        self.graphType = 1
+
         self.setWindowTitle("Приложение для работы с графами КапиГраф")
         self.init_canvas()
 
         self._graph = Graph({
-            'A': [['B', 1], ['C', 5]],
-            'B': [['A', 1], ['C', 9]],
+            'A': [['B', 1], ['C', 10]],
+            'B': [['A', 1], ['C', 5]],
             'C': [['A', 10], ['B', 5]]
         })
         
@@ -36,7 +38,38 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.importBtn.clicked.connect(self.importGraph)
         self.bfsGetBtn.clicked.connect(self.show_bfs_paths)
         self.dfsGetBtn.clicked.connect(self.show_dfs_paths)
+
+        self.typeGraphSelect.currentTextChanged.connect(self.updateTypeGraph)
+
+        self.weightEdgeAddInput.setText('1')
+
         self.exportInput.addItems(['Сохранение в картинку', 'Сохранить в матрицу смежности'])
+
+
+    def updateVertexList(self):
+        """Обновление списка с вершинами в вкладке с алгоритмами"""
+
+        self.vertexList.clear()
+        self.vertexList.addItems([f'{v} - {self._graph.get_degree_vertex(v)}' for v in self._graph.get_vertices()])
+    
+
+    def updateEdgeList(self):
+        """Обновление списка с ребрами в вкладке с алгоритмами"""
+
+        self.edgeList.clear()
+        self.edgeList.addItems([f'{edge[0][0]} - {edge[0][1]} - {edge[1]}' for edge in self._graph.get_edges()])
+    
+    
+    def updateTypeGraph(self):
+        """Обновление типа графа"""
+
+        match self.typeGraphSelect.currentText():
+            case 'Взвешенный':
+                self.graphType = 1
+            case 'Невзвешенный':
+                self.graphType = 0
+
+        self.updateGraph()
 
 
     def updateGraph(self):
@@ -48,6 +81,10 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         self.deleteVertexSelect.addItems(self._graph.get_vertices())
         self.deleteStartEdgeSelect.addItems(self._graph.get_vertices())
         self.deleteEndEdgeSelect.addItems(self._graph.get_vertices())
+
+        self.updateVertexList()
+        self.updateEdgeList()
+
         self.plot_graph()
 
 
@@ -126,9 +163,10 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
         """"Добавление ребра"""
 
         if self.startEdgeAddInput.text() and self.endEdgeAddInput.text():
-            self._graph.add_edge(self.startEdgeAddInput.text(), self.endEdgeAddInput.text())
+            self._graph.add_edge(self.startEdgeAddInput.text(), self.endEdgeAddInput.text(), int(self.weightEdgeAddInput.text()))
             self.startEdgeAddInput.clear()
             self.endEdgeAddInput.clear()
+            self.weightEdgeAddInput.setText('1')
             self.updateGraph()
         else:
             QMessageBox.warning(self, "Ошибка", "Введите вершины для добавления ребра")
@@ -147,32 +185,22 @@ class GraphWindow(QMainWindow, Ui_MainWindow):
 
 
     def plot_graph(self):
-        """Функция отрисовки взвешенного графа"""
+        """Функция отрисовки графа"""
         
         B = nx.Graph()
 
         _graph_dict = self._graph._graph_dict
 
-        weight_graph = False
+        for node, edges in _graph_dict.items():
+            B.add_node(node)
 
-        try:
-            weight_graph = type(_graph_dict[list(_graph_dict.keys())[0]][0]) == list
-        except: pass
-
-        # Составление графа в зависимости от его типа
-        if weight_graph:
-
-            for node, edges in _graph_dict.items():
-                B.add_node(node)
-
-                for neighbor, weight in edges:
-                    B.add_node(neighbor)
-                    B.add_edge(node, neighbor, weight=weight)
+            for neighbor, weight in edges:
                 
-        else:
+                B.add_node(neighbor)
 
-            for node, edges in _graph_dict.items():
-                for neighbor in edges:
+                if self.graphType == 1:
+                    B.add_edge(node, neighbor, weight=weight)
+                elif self.graphType == 0:
                     B.add_edge(node, neighbor)
    
 

@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
+      <y>40</y>
       <width>991</width>
       <height>641</height>
      </rect>
@@ -78,7 +78,7 @@
         <x>470</x>
         <y>40</y>
         <width>411</width>
-        <height>251</height>
+        <height>341</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -91,7 +91,7 @@
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>120</y>
+         <y>180</y>
          <width>191</width>
          <height>121</height>
         </rect>
@@ -159,7 +159,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>10</y>
+         <y>70</y>
          <width>191</width>
          <height>91</height>
         </rect>
@@ -226,7 +226,7 @@
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>10</y>
+         <y>70</y>
          <width>191</width>
          <height>91</height>
         </rect>
@@ -278,9 +278,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>120</y>
+         <y>180</y>
          <width>191</width>
-         <height>121</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="frameShape">
@@ -331,7 +331,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>90</y>
+          <y>120</y>
           <width>80</width>
           <height>22</height>
          </rect>
@@ -365,6 +365,69 @@
          <string>Вторая вершина</string>
         </property>
        </widget>
+       <widget class="QLineEdit" name="weightEdgeAddInput">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>171</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
+        <property name="whatsThis">
+         <string/>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Вес ребра</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>20</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Тип графа</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="typeGraphSelect">
+       <property name="geometry">
+        <rect>
+         <x>180</x>
+         <y>20</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Взвешенный</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Невзвешенный</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QComboBox" name="exportInput">
@@ -581,6 +644,98 @@
         </property>
        </widget>
       </widget>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Вершины</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>170</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>15</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Ребра</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>200</y>
+        <width>151</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Вершина - степень</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>200</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Ребро - вес</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="vertexList">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>230</y>
+        <width>141</width>
+        <height>251</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="edgeList">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>230</y>
+        <width>141</width>
+        <height>251</height>
+       </rect>
+      </property>
      </widget>
     </widget>
    </widget>
